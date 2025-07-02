@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import numpy as np
 
 # Configurações gerais
 st.set_page_config(page_title="Exploração Geral dos Dados", layout="wide")
@@ -38,12 +39,34 @@ with col2:
     ax.set_ylabel("Número de Regiões")
     st.pyplot(fig)
 
-st.subheader("👥 Distribuição da População por Proximidade ao Oceano")
+# Gráfico boxplot
+st.subheader("🌊 Distribuição da População por Proximidade ao Oceano")
 st.markdown("Boxplot mostrando a variação da população entre regiões com diferentes proximidades ao oceano.")
 
-fig, ax = plt.subplots(figsize=(8, 5))
-sns.boxplot(x="ocean_proximity", y="population", data=df, ax=ax, palette="Set2")
+fig, ax = plt.subplots(figsize=(10, 15))
+sns.boxplot(
+    x="ocean_proximity",
+    y="population",
+    data=df,
+    ax=ax,
+    hue="ocean_proximity",
+    palette="Set2",
+    legend=False,
+    dodge=False,
+    width=0.8,
+    showfliers=True
+)
+
 ax.set_xlabel("Proximidade ao Oceano")
 ax.set_ylabel("População")
-st.pyplot(fig)
+ax.tick_params(axis='x', rotation=30)
+ax.set_ylim(0, 30000)
 
+
+ticks_100 = np.arange(0, 5100, 500)
+ticks_5000 = np.arange(10000, 30001, 5000)
+custom_ticks = np.concatenate([ticks_100, ticks_5000])
+ax.set_yticks(custom_ticks)
+
+fig.tight_layout()
+st.pyplot(fig)

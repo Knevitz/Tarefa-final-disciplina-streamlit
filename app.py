@@ -4,7 +4,13 @@ import pandas as pd
 st.set_page_config(page_title="Dashboard de Habitação na Califórnia", layout="wide")
 
 st.title("🏠 Dashboard de Habitação na Califórnia")
-
+st.markdown("---")
+st.markdown(
+    "<h1>"
+    "Pedro Emílio Knevitz Pedroso"
+    "</h1>", unsafe_allow_html=True
+)
+st.markdown("---")
 # Carregar dados
 df = pd.read_csv("dados/housing.csv")
 

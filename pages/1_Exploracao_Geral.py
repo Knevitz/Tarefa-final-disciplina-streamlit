@@ -38,4 +38,12 @@ with col2:
     ax.set_ylabel("Número de Regiões")
     st.pyplot(fig)
 
+st.subheader("👥 Distribuição da População por Proximidade ao Oceano")
+st.markdown("Boxplot mostrando a variação da população entre regiões com diferentes proximidades ao oceano.")
+
+fig, ax = plt.subplots(figsize=(8, 5))
+sns.boxplot(x="ocean_proximity", y="population", data=df, ax=ax, palette="Set2")
+ax.set_xlabel("Proximidade ao Oceano")
+ax.set_ylabel("População")
+st.pyplot(fig)
 

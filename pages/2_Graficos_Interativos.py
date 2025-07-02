@@ -54,7 +54,7 @@ fig1.update_layout(
 )
 st.plotly_chart(fig1, use_container_width=True)
 
-st.subheader("🌊 População Média por Proximidade ao Oceano (Interativo)")
+st.subheader("🌊 População Média por Proximidade ao Oceano")
 st.markdown(
     "Gráfico de barras interativo mostrando a média da população por categoria de proximidade ao oceano."
 )
